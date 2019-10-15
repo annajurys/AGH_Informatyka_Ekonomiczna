@@ -23,9 +23,7 @@ public class HelloController implements Initializable {
     @FXML
     Button buttonInstruction, buttonLoadFile;
 
-    protected void initVariables(BorderPane borderPane) {
-        this.borderPane = borderPane;
-    }
+    protected void initVariables(BorderPane borderPane) { this.borderPane = borderPane; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,6 +52,7 @@ public class HelloController implements Initializable {
             Parent root = (Parent) loader.load();
 
             LoadFileController controller = loader.getController();
+            controller.initVariables(borderPane);
 
             borderPane.setBottom(root);
         } catch (IOException e) {

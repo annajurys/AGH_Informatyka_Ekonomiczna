@@ -1,18 +1,13 @@
 package project.ie;
 
-import javafx.embed.swing.JFXPanel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -45,7 +40,7 @@ public class LoadFileController implements Initializable {
         file = fileChooser.showOpenDialog(stage);
         fileAbsolutePath = file.getAbsolutePath();
         */
-        fileAbsolutePath = "C:\\Users\\AJ\\Desktop\\1.xlsx";
+        fileAbsolutePath = "C:\\Users\\AJ\\Desktop\\1kopia.xlsx";
         //TODO: Odkomentuj powzszy kod i usun fileAbsolutePath (ostatnie)
 
         labelLoadFile.setText("You choose a file: " + fileAbsolutePath);
@@ -53,4 +48,19 @@ public class LoadFileController implements Initializable {
         re.readExcelFile();
 
     }
+    @FXML
+    private void onMouseClickedContinue(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("smallBig.fxml"));
+            Parent root = (Parent) loader.load();
+
+            SmallBigController controller = loader.getController();
+            controller.initVariables(borderPane);
+
+            borderPane.setBottom(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

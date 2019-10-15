@@ -13,15 +13,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InstructionController implements Initializable {
+public class SmallBigController implements Initializable {
 
     private BorderPane borderPane;
 
     @FXML
-    Label labelInstruction;
+    Label labelHelp, labelColName;
 
     @FXML
-    Button buttonBackToMainView;
+    Button buttonSmall, buttonBig;
+
+
 
     protected void initVariables(BorderPane borderPane) {
         this.borderPane = borderPane;
@@ -29,22 +31,17 @@ public class InstructionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        labelInstruction.setWrapText(true);
+        //ExcelFile f = new ExcelFile();
+        //labelColName.setText(f.getColumns().get(0).colName);
+    }
+
+    @FXML
+    private void onMouseClickedSmall(MouseEvent event) {
 
     }
 
     @FXML
-    private void onMouseClickedBackToMainView(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello.fxml"));
-            Parent root = (Parent) loader.load();
+    private void onMouseClickedBig(MouseEvent event) {
 
-            HelloController controller = loader.getController();
-            controller.initVariables(borderPane);
-
-            borderPane.setBottom(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -34,7 +34,7 @@ public class ReadExcel {
 
         XSSFSheet sheet = workbook.getSheetAt(0);
 
-        //int row_1 = 0;
+        int row_1 = -1;
 
         for (int j = 0 ; j < sheet.getRow(0).getLastCellNum() ; j++) {
 
@@ -42,12 +42,12 @@ public class ReadExcel {
             //LinkedList<Object> objects = new LinkedList<>();
 
             for (int i = 0 ; i < sheet.getLastRowNum() ; i++) {
-                //row_1++;
+                row_1++;
                 //objects.add(sheet.getRow(i).getCell(j).toString());
                 if(j==0 && i!=0) {
                     ChoiceNames choices = new ChoiceNames(j,i,sheet.getRow(i).getCell(j).toString());
                     f.addChoices(choices);
-                    //System.out.println("choiceName: " + choices.choiceName + i + j);
+                    System.out.println(" choiceName: " + choices.choiceName + " row: " + i + " col:" + j);
                 }
                 //System.out.print(sheet.getRow(i).getCell(j) + " ");
             }
@@ -61,7 +61,10 @@ public class ReadExcel {
                 }
                 Columns columns = new Columns(j,0,sheet.getRow(0).getCell(j).toString(),objectList);
                 f.addColumns(columns);
-                //System.out.println(j + "......" + row_1/sheet.getLastRowNum() + "......" + columns.getColName());
+                System.out.println(" row:" + 0 + " col: " + j + " colName: " + columns.getColName());
+                for(int i=0;i<columns.objects.size();i++) {
+                    System.out.println(columns.objects.get(i));
+                }
                 for(int i=0;i<=10;i++) {
 
                     //System.out.println(columns.objects.get(i));
