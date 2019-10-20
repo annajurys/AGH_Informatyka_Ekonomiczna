@@ -23,7 +23,7 @@ public class InstructionController implements Initializable {
     @FXML
     Button buttonBackToMainView;
 
-    protected void initVariables(BorderPane borderPane) {
+    protected void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;
     }
 
@@ -40,7 +40,7 @@ public class InstructionController implements Initializable {
             Parent root = (Parent) loader.load();
 
             HelloController controller = loader.getController();
-            controller.initVariables(borderPane);
+            controller.setBorderPane(borderPane);
 
             borderPane.setBottom(root);
         } catch (IOException e) {

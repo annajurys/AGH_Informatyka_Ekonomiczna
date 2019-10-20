@@ -35,6 +35,7 @@
                   </VBox>
                </children>
             </HBox>
+            <Button fx:id="buttonContinue" mnemonicParsing="false" onMouseClicked="#onMouseClickedContinue" text="Continue" />
          </children>
       </VBox>
    </children>

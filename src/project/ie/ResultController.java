@@ -17,7 +17,7 @@ public class ResultController implements Initializable {
 
     private BorderPane borderPane;
 
-    protected void initVariables(BorderPane borderPane) { this.borderPane = borderPane; }
+    protected void setBorderPane(BorderPane borderPane) { this.borderPane = borderPane; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

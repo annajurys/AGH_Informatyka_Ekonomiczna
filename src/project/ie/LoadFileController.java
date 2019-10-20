@@ -19,11 +19,13 @@ public class LoadFileController implements Initializable {
 
     File file;
     String fileAbsolutePath;
+    GetExcelFile excel;
+    ExcelFile excelFile;
 
     @FXML
     Label labelLoadFile, labelError;
 
-    protected void initVariables(BorderPane borderPane) {
+    protected void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;
     }
 
@@ -40,14 +42,14 @@ public class LoadFileController implements Initializable {
         file = fileChooser.showOpenDialog(stage);
         fileAbsolutePath = file.getAbsolutePath();
         */
-        fileAbsolutePath = "C:\\Users\\AJ\\Desktop\\1kopia.xlsx";
+        fileAbsolutePath = "C:\\Users\\zyngi\\OneDrive\\Pulpit\\1kopia.xlsx";
         //TODO: Odkomentuj powzszy kod i usun fileAbsolutePath (ostatnie)
 
         labelLoadFile.setText("You choose a file: " + fileAbsolutePath);
-        ReadExcel re = new ReadExcel(fileAbsolutePath);
-        re.readExcelFile();
-
+        excel = new GetExcelFile(fileAbsolutePath);
+        excelFile = excel.getExcelFileAndSaveInExcelFile();
     }
+
     @FXML
     private void onMouseClickedContinue(MouseEvent event) {
         try {
@@ -55,7 +57,7 @@ public class LoadFileController implements Initializable {
             Parent root = (Parent) loader.load();
 
             SmallBigController controller = loader.getController();
-            controller.initVariables(borderPane);
+            controller.setBorderPaneAndExcelFile(borderPane, excelFile);
 
             borderPane.setBottom(root);
         } catch (IOException e) {

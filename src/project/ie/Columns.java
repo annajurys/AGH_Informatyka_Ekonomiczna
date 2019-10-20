@@ -3,11 +3,16 @@ package project.ie;
 import java.util.LinkedList;
 
 public class Columns {
+    enum SmallOrBig {
+        SMALL,
+        BIG
+    }
 
     public int column;
     public int row;
     public String colName;
-    public LinkedList<Object> objects = new LinkedList<>();
+    public LinkedList<Object> objects;
+    public SmallOrBig smallOrBig;
 
     public Columns(int column, int row, String colName, LinkedList<Object> objects) {
         this.column = column;
@@ -16,6 +21,9 @@ public class Columns {
         this.objects = objects;
     }
 
+    public void setSmallOrBig(SmallOrBig smallOrBig) {
+        this.smallOrBig = smallOrBig;
+    }
 
     public int getColumn() {
         return column;
