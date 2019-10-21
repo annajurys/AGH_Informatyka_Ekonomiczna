@@ -1,0 +1,101 @@
+package project.ie;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.LinkedList;
+import java.util.ResourceBundle;
+
+public class CorrectErrorsController implements Initializable {
+
+    private BorderPane borderPane;
+    private ExcelFile excelFile;
+    //private LinkedList<Integer> listOfNullColumns = new LinkedList<>();
+    //private LinkedList<Integer> listOfNullRows = new LinkedList<>();
+    //private LinkedList<String> listOfChoiceNames = new LinkedList<>();
+    //private LinkedList<String> listOfColNames = new LinkedList<>();
+    private int i, j;
+
+    @FXML
+    Label labelHelp, labelPlace;
+
+    @FXML
+    TextField textFieldValue;
+
+    @FXML
+    Button buttonSave;
+
+    protected void setBorderPaneAndExcelFile(BorderPane borderPane, ExcelFile excelFile) {
+        this.borderPane = borderPane;
+        this.excelFile = excelFile;
+
+        i=0;
+        j=0;
+
+        setLabelPlace();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //doListOfNulls();
+        //i=0;
+        //for(int e=0;e<listOfChoiceNames.size();e++)
+        //{
+        //    System.out.println(listOfChoiceNames.get(e).toString());
+        //}
+    }
+
+    public void setLabelPlace() {
+        String text = null;
+        boolean foundNullValue = false;
+
+        while (i < excelFile.columns.size() && !foundNullValue) {
+            while (j < excelFile.columns.get(i).objects.size() && !foundNullValue) {
+                if (excelFile.columns.get(i).objects.get(j).equals("null")) {
+                    foundNullValue = true;
+
+                    text = excelFile.columns.get(i).colName + " " + excelFile.choiceNames.get(j).choiceName;
+                }
+
+                j++;
+            }
+
+            i++;
+        }
+
+        labelPlace.setText(text);
+    }
+
+    /*
+    public void doListOfNulls() {
+        for(int i_1=0;i_1<excelFile.getColumns().size();i_1++) {
+            for(int j=0;j<excelFile.getChoiceNames().size();j++) {
+                if(excelFile.getColumns().get(i_1).objects.get(j).toString()=="null") {
+                    listOfNullColumns.add(i);
+                    listOfNullRows.add(j);
+                    listOfChoiceNames.add(excelFile.getChoiceNames().get(j).choiceName);
+                    listOfColNames.add(excelFile.columns.get(i).colName);
+
+                }
+            }
+        }
+        i++;
+    }
+    */
+
+
+    @FXML
+    private void onMouseClickedSave(MouseEvent event) {
+
+    }
+
+}

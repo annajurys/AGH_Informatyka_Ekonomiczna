@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -24,6 +25,9 @@ public class LoadFileController implements Initializable {
 
     @FXML
     Label labelLoadFile, labelError;
+
+    @FXML
+    Button buttonFixTheErrors, buttonContinue;
 
     protected void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;
@@ -48,6 +52,21 @@ public class LoadFileController implements Initializable {
         labelLoadFile.setText("You choose a file: " + fileAbsolutePath);
         excel = new GetExcelFile(fileAbsolutePath);
         excelFile = excel.getExcelFileAndSaveInExcelFile();
+
+        for(int i=0;i<excelFile.getColumns().size();i++) {
+            for(int j=0;j<excelFile.getChoiceNames().size();j++) {
+                if(excelFile.getColumns().get(i).objects.get(j).toString()=="null") {
+                    labelError.setText(labelError.getText() + "Error: Empty cell or not numeric value in " + excelFile.getColumns().get(i).colName + " in " + excelFile.getChoiceNames().get(j).choiceName + "\n");
+                }
+            }
+        }
+        if(labelError.getText().isEmpty()) {
+            buttonFixTheErrors.setVisible(false);
+            labelError.setVisible(false);
+        }
+        else {
+            buttonContinue.setVisible(false);
+        }
     }
 
     @FXML
@@ -65,4 +84,18 @@ public class LoadFileController implements Initializable {
         }
     }
 
+    @FXML
+    private void onMouseClickedFixTheErrors(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("choose_method_of_fixing_errors.fxml"));
+            Parent root = (Parent) loader.load();
+
+            ChooseMethodOfFixingErrorsController controller = loader.getController();
+            controller.setBorderPaneAndExcelFile(borderPane,excelFile);
+
+            borderPane.setBottom(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
