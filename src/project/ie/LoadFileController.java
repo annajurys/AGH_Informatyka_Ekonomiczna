@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +38,7 @@ public class LoadFileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource ExcelFile");
 
@@ -45,8 +48,8 @@ public class LoadFileController implements Initializable {
         Window stage = new Stage();
         file = fileChooser.showOpenDialog(stage);
         fileAbsolutePath = file.getAbsolutePath();
-        */
-        fileAbsolutePath = "C:\\Users\\zyngi\\OneDrive\\Pulpit\\1kopia.xlsx";
+
+        //fileAbsolutePath = "C:\\Users\\zyngi\\OneDrive\\Pulpit\\1kopia.xlsx";
         //TODO: Odkomentuj powzszy kod i usun fileAbsolutePath (ostatnie)
 
         labelLoadFile.setText("You choose a file: " + fileAbsolutePath);

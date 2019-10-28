@@ -39,7 +39,7 @@ public class SmallBigController implements Initializable {
     }
 
     public void setLabelName() {
-        String colName = excelFile.columns.get(0).colName;
+        String colName = excelFile.columns.get(i).colName;
         labelColName.setText(colName);
 
         i++;
