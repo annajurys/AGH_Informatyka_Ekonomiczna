@@ -18,9 +18,18 @@ public class ResultController implements Initializable {
     private BorderPane borderPane;
     private ExcelFile excelFile;
 
+    @FXML
+    Label labelResults;
+
     public void setBorderPaneAndExcelFile(BorderPane borderPane, ExcelFile excelFile) {
         this.borderPane = borderPane;
         this.excelFile = excelFile;
+
+        String results = "Results:" + System.lineSeparator();
+        for(int i = 0; i < excelFile.choiceNames.size(); i++) {
+            results += System.lineSeparator() + excelFile.choiceNames.get(i).toString();
+        }
+        labelResults.setText(results);
 
         System.out.println("-------------------");
         for (int i = 0; i < excelFile.columns.size(); i++) {
@@ -36,7 +45,6 @@ public class ResultController implements Initializable {
             //System.out.println("BestChoice");
             //System.out.println(excelFile.columns.get(i).BestChoice());
         }
-
     }
 
     @Override

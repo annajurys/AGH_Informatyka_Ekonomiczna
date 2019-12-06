@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.ResultController" />
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.ResultController">
+   <children>
+      <Label fx:id="labelResults" alignment="CENTER" contentDisplay="CENTER" layoutX="115.0" layoutY="57.0" prefHeight="191.0" prefWidth="371.0" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

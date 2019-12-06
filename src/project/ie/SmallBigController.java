@@ -69,6 +69,20 @@ public class SmallBigController implements Initializable {
     }
 
     public void goToResult() {
+        for(int i = 0; i < excelFile.columns.size(); i++) {
+            excelFile.columns.get(i).Normalization();
+            //System.out.println(excelFile.columns.get(i).normalized);
+            //System.out.println(excelFile.columns.get(i).BestChoice());
+        }
+
+        excelFile.Distances();
+        /*for(int i = 0; i < excelFile.choiceNames.size(); i++) {
+            System.out.println(excelFile.choiceNames.get(i).distance);
+        }*/
+
+        excelFile.Sort();
+        /*System.out.println(excelFile.choiceNames);*/
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("result.fxml"));
             Parent root = (Parent) loader.load();

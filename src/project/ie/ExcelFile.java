@@ -1,5 +1,6 @@
 package project.ie;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 import static java.lang.Math.*;
@@ -36,12 +37,10 @@ public class ExcelFile {
         Double dis, sum, distance;
         for(int i = 0; i < choiceNames.size(); i++) {
             ChoiceName choice = choiceNames.get(i);
-            dis = 0.00;
             sum = 0.00;
-            distance = 0.00;
             for(int j = 0; j < columns.size(); j++) {
                 Column column = columns.get(j);
-                dis = abs(column.normalized.get(choice.row) - column.BestChoice());
+                dis = abs(column.normalized.get(choice.row-1) - column.BestChoice());
                 sum += dis;
             }
             distance = sqrt(sum);
@@ -49,7 +48,7 @@ public class ExcelFile {
         }
     }
 
-    /*public void Sort() {
-
-    }*/
+    public void Sort() {
+        Collections.sort(choiceNames);
+    }
 }

@@ -46,10 +46,10 @@ public class LoadFileController implements Initializable {
         fileChooser.getExtensionFilters().add(extFilter);
 
         Window stage = new Stage();
-        //file = fileChooser.showOpenDialog(stage);
-        //fileAbsolutePath = file.getAbsolutePath();
+        file = fileChooser.showOpenDialog(stage);
+        fileAbsolutePath = file.getAbsolutePath();
 
-        fileAbsolutePath = "C:\\Users\\zyngi\\OneDrive\\Pulpit\\1kopia.xlsx";
+        //fileAbsolutePath = "C:\\Users\\zyngi\\OneDrive\\Pulpit\\1kopia.xlsx";
         //TODO: Odkomentuj powzszy kod i usun fileAbsolutePath (ostatnie)
 
         labelLoadFile.setText("You choose a file: " + fileAbsolutePath);

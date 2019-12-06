@@ -2,7 +2,7 @@ package project.ie;
 
 import java.util.LinkedList;
 
-public class ChoiceName {
+public class ChoiceName implements Comparable<ChoiceName>{
 
     public int column;
     public int row;
@@ -15,6 +15,14 @@ public class ChoiceName {
         this.choiceName = colName;
     }
 
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
     public int getColumn() {
         return column;
     }
@@ -25,5 +33,13 @@ public class ChoiceName {
 
     public String getChoiceName() {
         return choiceName;
+    }
+
+    @Override
+    public String toString() { return choiceName; }
+
+    @Override
+    public int compareTo(ChoiceName choiceName) {
+        return Double.compare(this.getDistance(), choiceName.getDistance());
     }
 }
