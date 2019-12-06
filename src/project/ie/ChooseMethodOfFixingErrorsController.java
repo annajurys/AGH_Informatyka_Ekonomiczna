@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
@@ -25,7 +23,6 @@ public class ChooseMethodOfFixingErrorsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
     }
 
     @FXML
@@ -60,12 +57,33 @@ public class ChooseMethodOfFixingErrorsController implements Initializable {
 
     @FXML
     private void onMouseClickedUseAverageOfColumn(MouseEvent event) {
-
+        System.out.println("klik");
+        AverageOfColumn averageOfColumn = new AverageOfColumn();
+        averageOfColumn.setExcelFile(excelFile);
+        averageOfColumn.setAverageForNulls();
+        //for(double elem : a) {
+        //    System.out.println(elem + "  jj");
+        //}
+        goToResult();
     }
 
     @FXML
     private void onMouseClickedRemoveAllFaultyRows(MouseEvent event) {
+        goToResult();
+    }
 
+    public void goToResult() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("result.fxml"));
+            Parent root = (Parent) loader.load();
+
+            ResultController controller = loader.getController();
+            controller.setBorderPaneAndExcelFile(borderPane, excelFile);
+
+            borderPane.setBottom(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

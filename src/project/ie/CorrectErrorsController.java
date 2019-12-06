@@ -12,7 +12,6 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class CorrectErrorsController implements Initializable {
@@ -57,23 +56,54 @@ public class CorrectErrorsController implements Initializable {
     public void setLabelPlace() {
         String text = null;
         boolean foundNullValue = false;
-
+        i=0;
         while (i < excelFile.columns.size() && !foundNullValue) {
+            j=0;
             while (j < excelFile.columns.get(i).objects.size() && !foundNullValue) {
-                if (excelFile.columns.get(i).objects.get(j).equals("null")) {
+                if (excelFile.columns.get(i).objects.get(j) == "null") {
                     foundNullValue = true;
-
                     text = excelFile.columns.get(i).colName + " " + excelFile.choiceNames.get(j).choiceName;
+
                 }
 
                 j++;
             }
-
             i++;
         }
 
-        labelPlace.setText(text);
+        i--;
+        j--;
+
+        if(!foundNullValue)
+            openSmallBig();
+        else {
+            labelPlace.setText(text);
+        }
     }
+
+    public void openSmallBig() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("smallBig.fxml"));
+            Parent root = (Parent) loader.load();
+
+            SmallBigController controller = loader.getController();
+            controller.setBorderPaneAndExcelFile(borderPane,  excelFile);
+
+            borderPane.setBottom(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onMouseClickedSave(MouseEvent event) {
+        System.out.println("zzz " + i + " " + j);
+
+        excelFile.columns.get(i).objects.set(j, textFieldValue.getText()); //sprawdzic czy to int
+        textFieldValue.clear();
+        setLabelPlace();
+    }
+
 
     /*
     public void doListOfNulls() {
@@ -91,11 +121,4 @@ public class CorrectErrorsController implements Initializable {
         i++;
     }
     */
-
-
-    @FXML
-    private void onMouseClickedSave(MouseEvent event) {
-
-    }
-
 }

@@ -2,13 +2,9 @@ package project.ie;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.apache.poi.ss.formula.functions.Column;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -52,7 +48,9 @@ public class GetExcelFile {
             emptyRows++;
             i--;
         }
+
         howMuchRows = sheet.getLastRowNum()-emptyRows;
+
         return howMuchRows;
     }
 
@@ -65,28 +63,26 @@ public class GetExcelFile {
         for (int j = 0 ; j < colNumber ; j++) {
             for (int i = 0 ; i < rowNumber ; i++) {
                 if(j==0 && i!=0) {
-                    ChoiceNames choices = new ChoiceNames(j,i,sheet.getRow(i).getCell(j).toString());
+                    ChoiceName choices = new ChoiceName(j,i,sheet.getRow(i).getCell(j).toString());
                     f.addChoices(choices);
                     System.out.println(" choiceName: " + choices.choiceName + " row: " + i + " col:" + j);
                 }
             }
             if(j!=0) {
                 LinkedList<Object> objectList = new LinkedList<>();
-                for(int row=0;row<=rowNumber;row++) {
-                    if(row!=0) {
-                        if(sheet.getRow(row).getCell(j).toString().isEmpty() || sheet.getRow(row).getCell(j).getCellType()!= CellType.NUMERIC) {
-                            objectList.add("null");
-                        }
-                        else {
-                            objectList.add(sheet.getRow(row).getCell(j).toString());
-                        }
+                for(int row=1;row<rowNumber;row++) {
+                    if(sheet.getRow(row).getCell(j).toString().isEmpty() || sheet.getRow(row).getCell(j).getCellType()!= CellType.NUMERIC) {
+                        objectList.add("null");
+                    }
+                    else {
+                        objectList.add(sheet.getRow(row).getCell(j).toString());
                     }
                 }
-                Columns columns = new Columns(j,0,sheet.getRow(0).getCell(j).toString(),objectList);
-                f.addColumns(columns);
-                System.out.println(" row:" + 0 + " col: " + j + " colName: " + columns.getColName());
-                for(int i=0;i<columns.objects.size()-1;i++) {
-                    System.out.println(columns.objects.get(i));
+                Column column = new Column(j,0,sheet.getRow(0).getCell(j).toString(),objectList);
+                f.addColumns(column);
+                System.out.println(" row:" + 0 + " col: " + j + " colName: " + column.getColName());
+                for(int i = 0; i< column.objects.size(); i++) {
+                    System.out.println(column.objects.get(i));
                 }
             }
         }

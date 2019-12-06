@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class SmallBigController implements Initializable {
@@ -41,42 +40,41 @@ public class SmallBigController implements Initializable {
     public void setLabelName() {
         String colName = excelFile.columns.get(i).colName;
         labelColName.setText(colName);
-
-        i++;
     }
 
     @FXML
     private void onMouseClickedSmall(MouseEvent event) {
-        if(i < excelFile.getColumns().size()) {
-            excelFile.columns.get(i).setSmallOrBig(Columns.SmallOrBig.SMALL);
-            if(excelFile.getColumns().getLast().getColumn()>i)
-                setLabelName();
+        excelFile.columns.get(i).setSmallOrBig(Column.SmallOrBig.SMALL);
+
+        if(i < excelFile.getColumns().size()-1) {
+            i++;
+            setLabelName();
         }
         else {
-            onMouseClickedContinue(event);
+            goToResult();
         }
     }
 
     @FXML
     private void onMouseClickedBig(MouseEvent event) {
-        if(i < excelFile.getColumns().size()) {
-            excelFile.columns.get(i).setSmallOrBig(Columns.SmallOrBig.SMALL);
-            if(excelFile.getColumns().getLast().getColumn()>i)
-                setLabelName();
+        excelFile.columns.get(i).setSmallOrBig(Column.SmallOrBig.BIG);
+
+        if(i < excelFile.getColumns().size()-1) {
+            i++;
+            setLabelName();
         }
         else {
-            onMouseClickedContinue(event);
+            goToResult();
         }
     }
 
-    @FXML
-    private void onMouseClickedContinue(MouseEvent event) {
+    public void goToResult() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("result.fxml"));
             Parent root = (Parent) loader.load();
 
             ResultController controller = loader.getController();
-            controller.setBorderPane(borderPane);
+            controller.setBorderPaneAndExcelFile(borderPane, excelFile);
 
             borderPane.setBottom(root);
         } catch (IOException e) {
