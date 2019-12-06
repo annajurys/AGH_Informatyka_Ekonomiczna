@@ -25,61 +25,64 @@ public class GetExcelFile {
     }
 
     public int howMuchColumns () {
+        //System.out.println("ff");
         XSSFSheet sheet = workbook.getSheetAt(0);
         int howMuchColumns = 0;
-        int emptyColumns = 0;
-        int i = sheet.getRow(0).getLastCellNum()-1;
-        while(sheet.getRow(0).getCell(i).toString().isEmpty() && i>=0)
+        int i=1;
+        //System.out.println(sheet.getRow(0).getCell(i).toString());
+        while(i < sheet.getRow(0).getPhysicalNumberOfCells())
         {
-            emptyColumns++;
-            i--;
+            if(sheet.getRow(0).getCell(i).toString().isEmpty())
+                break;
+
+            howMuchColumns++;
+            i++;
         }
-        howMuchColumns=sheet.getRow(0).getLastCellNum()-emptyColumns;
-        return howMuchColumns;
+        return howMuchColumns+1;
     }
 
     public int howMuchRows () {
         XSSFSheet sheet = workbook.getSheetAt(0);
         int howMuchRows = 0;
-        int emptyRows = 0;
-        int i = sheet.getLastRowNum()-1;
-        while(sheet.getRow(i).getCell(0).toString().isEmpty())
+        int i=1;
+        while(i < sheet.getPhysicalNumberOfRows())
         {
-            emptyRows++;
-            i--;
+            if(sheet.getRow(i).getCell(0).toString().isEmpty())
+                break;
+
+            howMuchRows++;
+            i++;
         }
 
-        howMuchRows = sheet.getLastRowNum()-emptyRows;
-
-        return howMuchRows;
+        return howMuchRows+1;
     }
 
 
     public ExcelFile getExcelFileAndSaveInExcelFile(){
-        ExcelFile f = new ExcelFile();
+        ExcelFile excelFile = new ExcelFile();
         XSSFSheet sheet = workbook.getSheetAt(0);
         int colNumber = howMuchColumns();
         int rowNumber = howMuchRows();
         for (int j = 0 ; j < colNumber ; j++) {
             for (int i = 0 ; i < rowNumber ; i++) {
                 if(j==0 && i!=0) {
-                    ChoiceName choices = new ChoiceName(j,i,sheet.getRow(i).getCell(j).toString());
-                    f.addChoices(choices);
-                    System.out.println(" choiceName: " + choices.choiceName + " row: " + i + " col:" + j);
+                    ChoiceName choice = new ChoiceName(j,i,sheet.getRow(i).getCell(j).toString());
+                    excelFile.addChoices(choice);
+                    System.out.println(" choiceName: " + choice.choiceName + " row: " + i + " col:" + j);
                 }
             }
             if(j!=0) {
-                LinkedList<Object> objectList = new LinkedList<>();
+                LinkedList<Double> objectList = new LinkedList<>();
                 for(int row=1;row<rowNumber;row++) {
                     if(sheet.getRow(row).getCell(j).toString().isEmpty() || sheet.getRow(row).getCell(j).getCellType()!= CellType.NUMERIC) {
-                        objectList.add("null");
+                        objectList.add(null);
                     }
                     else {
-                        objectList.add(sheet.getRow(row).getCell(j).toString());
+                        objectList.add((Double.valueOf(sheet.getRow(row).getCell(j).toString())));
                     }
                 }
                 Column column = new Column(j,0,sheet.getRow(0).getCell(j).toString(),objectList);
-                f.addColumns(column);
+                excelFile.addColumns(column);
                 System.out.println(" row:" + 0 + " col: " + j + " colName: " + column.getColName());
                 for(int i = 0; i< column.objects.size(); i++) {
                     System.out.println(column.objects.get(i));
@@ -93,6 +96,6 @@ public class GetExcelFile {
             e.printStackTrace();
         }
 
-        return f;
+        return excelFile;
     }
 }

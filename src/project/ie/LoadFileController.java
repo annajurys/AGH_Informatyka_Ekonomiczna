@@ -49,7 +49,7 @@ public class LoadFileController implements Initializable {
         //file = fileChooser.showOpenDialog(stage);
         //fileAbsolutePath = file.getAbsolutePath();
 
-        fileAbsolutePath = "C:\\Users\\AJ\\Desktop\\1kopia.xlsx";
+        fileAbsolutePath = "C:\\Users\\zyngi\\OneDrive\\Pulpit\\1kopia.xlsx";
         //TODO: Odkomentuj powzszy kod i usun fileAbsolutePath (ostatnie)
 
         labelLoadFile.setText("You choose a file: " + fileAbsolutePath);
@@ -58,7 +58,7 @@ public class LoadFileController implements Initializable {
 
         for(int i=0;i<excelFile.getColumns().size();i++) {
             for(int j=0;j<excelFile.getChoiceNames().size();j++) {
-                if(excelFile.getColumns().get(i).objects.get(j).toString()=="null") {
+                if(excelFile.getColumns().get(i).objects.get(j) == null) {
                     labelError.setText(labelError.getText() + "Error: Empty cell or not numeric value in " + excelFile.getColumns().get(i).colName + " in " + excelFile.getChoiceNames().get(j).choiceName + "\n");
                 }
             }

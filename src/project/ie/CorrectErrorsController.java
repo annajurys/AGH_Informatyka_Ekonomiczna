@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class CorrectErrorsController implements Initializable {
 
@@ -60,7 +61,7 @@ public class CorrectErrorsController implements Initializable {
         while (i < excelFile.columns.size() && !foundNullValue) {
             j=0;
             while (j < excelFile.columns.get(i).objects.size() && !foundNullValue) {
-                if (excelFile.columns.get(i).objects.get(j) == "null") {
+                if (excelFile.columns.get(i).objects.get(j) == null) {
                     foundNullValue = true;
                     text = excelFile.columns.get(i).colName + " " + excelFile.choiceNames.get(j).choiceName;
 
@@ -98,8 +99,15 @@ public class CorrectErrorsController implements Initializable {
     @FXML
     private void onMouseClickedSave(MouseEvent event) {
         System.out.println("zzz " + i + " " + j);
-
-        excelFile.columns.get(i).objects.set(j, textFieldValue.getText()); //sprawdzic czy to int
+        String newValue = textFieldValue.getText();
+        try {
+            Double newValueDouble = Double.valueOf(newValue);
+            excelFile.columns.get(i).objects.set(j, newValueDouble);
+            labelHelp.setText("Enter the value:");
+        }
+        catch (Exception e) {
+            labelHelp.setText("YOU NEED TO ADD DOUBLE VALUE, try again:");
+        }
         textFieldValue.clear();
         setLabelPlace();
     }

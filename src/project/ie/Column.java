@@ -13,11 +13,11 @@ public class Column {
     public int column;
     public int row;
     public String colName;
-    public LinkedList<Object> objects;
+    public LinkedList<Double> objects;
     public SmallOrBig smallOrBig;
     public LinkedList<Double> normalized;
 
-    public Column(int column, int row, String colName, LinkedList<Object> objects) {
+    public Column(int column, int row, String colName, LinkedList<Double> objects) {
         this.column = column;
         this.row = row;
         this.colName = colName;
@@ -40,7 +40,7 @@ public class Column {
         return colName;
     }
 
-    public LinkedList<Object> getObjects() {
+    public LinkedList<Double> getObjects() {
         return objects;
     }
 

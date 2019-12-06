@@ -60,7 +60,7 @@ public class ChooseMethodOfFixingErrorsController implements Initializable {
         System.out.println("klik");
         AverageOfColumn averageOfColumn = new AverageOfColumn();
         averageOfColumn.setExcelFile(excelFile);
-        averageOfColumn.setAverageForNulls();
+        averageOfColumn.setAverageOfColumn();
         //for(double elem : a) {
         //    System.out.println(elem + "  jj");
         //}
@@ -69,6 +69,10 @@ public class ChooseMethodOfFixingErrorsController implements Initializable {
 
     @FXML
     private void onMouseClickedRemoveAllFaultyRows(MouseEvent event) {
+        RemoveAllFaultyRows removeAllFaultyRows = new RemoveAllFaultyRows();
+        removeAllFaultyRows.setExcelFile(excelFile);
+        removeAllFaultyRows.removeAllFaultyRows();
+
         goToResult();
     }
 
