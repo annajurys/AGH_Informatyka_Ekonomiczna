@@ -44,6 +44,33 @@ public class Column {
         return objects;
     }
 
+
+    public Double Average() {
+        Double sum = 0.00;
+        int n = objects.size();
+        for (Double object : objects) {
+            sum += object;
+        }
+        return sum/n;
+    }
+
+    public Double StandardDeviation () {
+        Double sum = 0.00;
+        int n = objects.size();
+        for (Double object : objects) {
+            sum += pow(object - Average(), 2);
+        }
+        return sqrt(sum/n);
+    }
+
+    public Double Min() {
+        return Average() - 3*StandardDeviation();
+    }
+
+    public Double Max() {
+        return Average() + 3*StandardDeviation();
+    }
+
     public void Normalization() {
         normalized = new LinkedList<Double>();
         Double square, value;

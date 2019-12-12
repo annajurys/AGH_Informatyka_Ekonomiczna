@@ -26,7 +26,7 @@ public class RemoveAllFaultyRows {
                         for(int k=0; k<excelFile.columns.size(); k++) {
                             excelFile.columns.get(k).objects.remove(j);
                         }
-
+                        excelFile.choiceNames.remove(j);
                         j--;
                     }
                     //System.out.println(i + " i< j> " + j);

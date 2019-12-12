@@ -33,6 +33,23 @@ public class ExcelFile {
         choiceNames.add(choices);
     }
 
+    public void removeOutliers() {
+        for(int i = 0; i < columns.size(); i++) {
+            Column column = columns.get(i);
+            Double min = column.Min();
+            Double max = column.Max();
+            for(int j = 0; j < column.objects.size(); j++) {
+                if(column.objects.get(j) < min || column.objects.get(j) > max) {
+                    for(int k = 0; k < columns.size(); k++) {
+                        columns.get(k).objects.remove(j);
+                    }
+                    choiceNames.remove(j);
+                    j--;
+                }
+            }
+        }
+    }
+
     public void Distances() {
         Double dis, sum, distance;
         for(int i = 0; i < choiceNames.size(); i++) {
@@ -40,7 +57,8 @@ public class ExcelFile {
             sum = 0.00;
             for(int j = 0; j < columns.size(); j++) {
                 Column column = columns.get(j);
-                dis = abs(column.normalized.get(choice.row-1) - column.BestChoice());
+                Double best = column.BestChoice();
+                dis = abs(column.normalized.get(i) - best);
                 sum += dis;
             }
             distance = sqrt(sum);

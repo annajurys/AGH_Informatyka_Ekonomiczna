@@ -69,6 +69,9 @@ public class SmallBigController implements Initializable {
     }
 
     public void goToResult() {
+
+        excelFile.removeOutliers();
+
         for(int i = 0; i < excelFile.columns.size(); i++) {
             excelFile.columns.get(i).Normalization();
             //System.out.println(excelFile.columns.get(i).normalized);
