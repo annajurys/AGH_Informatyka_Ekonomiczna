@@ -2,34 +2,62 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.ChooseMethodOfFixingErrorsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #011627;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.ChooseMethodOfFixingErrorsController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedBackToLoadFile" text="Back to load file">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedShowAndCorrectErrors" text="Show and correct errors">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="buttonRemoveAllFaultyRows" mnemonicParsing="false" onMouseClicked="#onMouseClickedRemoveAllFaultyRows" text="Remove all faulty rows" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedUseAverageOfColumn" text="Use average of column">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
+            <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedBackToLoadFile" prefWidth="250.0" style="-fx-background-color: #EFFFE9; -fx-background-radius: 0;" text="Back to load file">
+               <font>
+                  <Font name="Bookman Old Style" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <effect>
+                  <Blend />
+               </effect>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedShowAndCorrectErrors" prefWidth="250.0" style="-fx-background-color: #EFFFE9; -fx-background-radius: 0;" text="Show and correct errors">
+               <font>
+                  <Font name="Bookman Old Style" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="buttonRemoveAllFaultyRows" mnemonicParsing="false" onMouseClicked="#onMouseClickedRemoveAllFaultyRows" prefWidth="250.0" style="-fx-background-color: #EFFFE9; -fx-background-radius: 0;" text="Remove all faulty rows">
+               <font>
+                  <Font name="Bookman Old Style" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedUseAverageOfColumn" prefWidth="250.0" style="-fx-background-color: #EFFFE9; -fx-background-radius: 0;" text="Use average of column">
+               <font>
+                  <Font name="Bookman Old Style" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>

@@ -7,31 +7,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.CorrectErrorsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #011627;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.CorrectErrorsController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="labelHelp" text="Enter the value:">
+            <Label fx:id="labelHelp" text="Enter the value:" textFill="#efffe9">
                <VBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Bookman Old Style" size="18.0" />
+               </font>
             </Label>
-            <Label fx:id="labelPlace" text="place">
+            <Label fx:id="labelPlace" text="place" textFill="#efffe9">
                <VBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Bookman Old Style" size="18.0" />
+               </font>
             </Label>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                      <children>
-                        <TextField fx:id="textFieldValue" />
+                        <TextField fx:id="textFieldValue">
+                           <font>
+                              <Font name="Bookman Old Style" size="18.0" />
+                           </font></TextField>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="buttonSave" mnemonicParsing="false" onMouseClicked="#onMouseClickedSave" text="Save" />
+                        <Button fx:id="buttonSave" mnemonicParsing="false" onMouseClicked="#onMouseClickedSave" style="-fx-background-color: #EFFFE9;  -fx-background-radius: 0;" text="Save">
+                           <font>
+                              <Font name="Bookman Old Style" size="18.0" />
+                           </font></Button>
                      </children>
                   </VBox>
                </children>

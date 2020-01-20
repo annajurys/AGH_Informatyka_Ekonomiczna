@@ -3,21 +3,38 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.InstructionController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #011627;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.InstructionController">
    <children>
-      <VBox alignment="CENTER" prefHeight="300.0" prefWidth="600.0">
+      <VBox alignment="CENTER" layoutX="6.0" layoutY="80.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="labelInstruction" alignment="TOP_LEFT" prefHeight="300.0" prefWidth="450.0" text="You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...You need to import file...">
+            <Label fx:id="labelInstruction" alignment="TOP_LEFT" prefHeight="202.0" prefWidth="559.0" text="Welcome in our app!&#10;&#10;Are you a person who find it hard to make small decisions in life? Or maybe you always want to make sure that the decisions you make are the best ones?&#10;Do you need to buy a new laptop, choose a shop, or just make a ranking of players in your favourite football team?&#10;If so, this app is made for you!&#10;Here's what to do to let it choose for you:&#10;1. Collect data about factors that are important for you while choosing an option and save them in a file with extension: &quot;.xlsx&quot; or &quot;.xls&quot;. &#10;2. Make sure that all options are written in rows, factors in columns and&#10;that all the data is numeric. The file should present like this:" textAlignment="CENTER" textFill="#efffe9" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin></Label>
-            <Button fx:id="buttonBackToMainView" mnemonicParsing="false" onMouseClicked="#onMouseClickedBackToMainView" text="Back to main view">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin></Button>
+               </VBox.margin>
+               <font>
+                  <Font name="Bookman Old Style" size="13.0" />
+               </font></Label>
+            <ImageView fitHeight="81.0" fitWidth="336.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../example.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="118.0" prefWidth="563.0" text="3. In case the file contains any empty row or outliers, click the right buttons to pick how to fix them.&#10;4.  Choose whether each factor should be the smallest or the biggest as possible.&#10;5. See the results!  Here you will see top three options and stars that will show disproportions between choosen options, thay may or may not be similarly good.  " textAlignment="CENTER" textFill="#efffe9" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonBackToMainView" mnemonicParsing="false" onMouseClicked="#onMouseClickedBackToMainView" prefHeight="11.0" prefWidth="209.0" style="-fx-background-color: #EFFFE9; -fx-background-radius: 0;" text="Back to main view">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Button>
          </children></VBox>
    </children>
 </AnchorPane>

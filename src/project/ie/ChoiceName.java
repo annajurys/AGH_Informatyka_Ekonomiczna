@@ -13,6 +13,7 @@ public class ChoiceName implements Comparable<ChoiceName>{
         this.column = column;
         this.row = row;
         this.choiceName = colName;
+        distance = 0.00;
     }
 
     public Double getDistance() {

@@ -83,16 +83,32 @@ public class CorrectErrorsController implements Initializable {
     }
 
     public void openSmallBig() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("smallBig.fxml"));
-            Parent root = (Parent) loader.load();
+        boolean outliers = excelFile.findOutliers();
+        if(outliers == true) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("outliers.fxml"));
+                Parent root = (Parent) loader.load();
 
-            SmallBigController controller = loader.getController();
-            controller.setBorderPaneAndExcelFile(borderPane,  excelFile);
+                OutliersController controller = loader.getController();
+                controller.setBorderPaneAndExcelFile(borderPane, excelFile);
 
-            borderPane.setBottom(root);
-        } catch (IOException e) {
-            e.printStackTrace();
+                borderPane.setBottom(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("smallBig.fxml"));
+                Parent root = (Parent) loader.load();
+
+                SmallBigController controller = loader.getController();
+                controller.setBorderPaneAndExcelFile(borderPane, excelFile);
+
+                borderPane.setBottom(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

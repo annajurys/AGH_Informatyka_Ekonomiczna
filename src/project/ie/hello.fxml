@@ -5,23 +5,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.HelloController">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #011627;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.HelloController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label text="Hello in our app">
+            <Label text="CHOOSE WITH US!" textFill="#efffe9">
+               <VBox.margin>
+                  <Insets bottom="100.0" left="4.0" right="4.0" top="4.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Book Antiqua" size="24.0" />
+               </font></Label>
+            <Button fx:id="buttonInstruction" mnemonicParsing="false" onMouseClicked="#onMouseClickedInstruction" prefWidth="150.0" style="-fx-background-color: #EFFFE9;  -fx-background-radius: 0;" text="Instruction">
                <VBox.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </VBox.margin></Label>
-            <Button fx:id="buttonInstruction" mnemonicParsing="false" onMouseClicked="#onMouseClickedInstruction" text="Instruction">
+               </VBox.margin>
+               <font>
+                  <Font name="Book Antiqua" size="18.0" />
+               </font></Button>
+            <Button fx:id="buttonLoadFile" mnemonicParsing="false" onMouseClicked="#onMouseClickedLoadFile" prefWidth="150.0" style="-fx-background-color: #EFFFE9;  -fx-background-radius: 0;" text="Load file">
                <VBox.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </VBox.margin></Button>
-            <Button fx:id="buttonLoadFile" mnemonicParsing="false" onMouseClicked="#onMouseClickedLoadFile" text="Load file">
-               <VBox.margin>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </VBox.margin></Button>
+               </VBox.margin>
+               <font>
+                  <Font name="Book Antiqua" size="18.0" />
+               </font></Button>
          </children>
          <padding>
             <Insets top="30.0" />

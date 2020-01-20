@@ -1,5 +1,6 @@
 package project.ie;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static java.lang.Math.*;
@@ -16,12 +17,14 @@ public class Column {
     public LinkedList<Double> objects;
     public SmallOrBig smallOrBig;
     public LinkedList<Double> normalized;
+    public Double best;
 
     public Column(int column, int row, String colName, LinkedList<Double> objects) {
         this.column = column;
         this.row = row;
         this.colName = colName;
         this.objects = objects;
+        best = 0.00;
     }
 
     public void setSmallOrBig(SmallOrBig smallOrBig) {
@@ -44,23 +47,38 @@ public class Column {
         return objects;
     }
 
-
     public Double Average() {
         Double sum = 0.00;
-        int n = objects.size();
+        int n = 0;
         for (Double object : objects) {
-            sum += object;
+            if(object != null) {
+                sum += object;
+                n += 1;
+            }
         }
-        return sum/n;
+        if( n!= 0) {
+            return sum / n;
+        }
+        else {
+            throw new ArithmeticException();
+        }
     }
 
     public Double StandardDeviation () {
         Double sum = 0.00;
-        int n = objects.size();
+        int n = 0;
         for (Double object : objects) {
-            sum += pow(object - Average(), 2);
+            if(object != null) {
+                sum += pow(object - Average(), 2);
+                n += 1;
+            }
         }
-        return sqrt(sum/n);
+        if(n != 0) {
+            return sqrt(sum / n);
+        }
+        else {
+            throw new ArithmeticException();
+        }
     }
 
     public Double Min() {
@@ -85,22 +103,21 @@ public class Column {
         }
     }
 
-    public double BestChoice() {
-        double Best = normalized.get(0);
+    public void BestChoice() {
+        best = normalized.get(0);
         if(smallOrBig == SmallOrBig.SMALL) {
             for(int i = 1; i < normalized.size(); i++) {
-                if(normalized.get(i) < Best) {
-                    Best = normalized.get(i);
+                if(normalized.get(i) < best) {
+                    best = normalized.get(i);
                 }
             }
         }
         else {
             for(int i = 1; i < normalized.size(); i++) {
-                if(normalized.get(i) > Best) {
-                    Best = normalized.get(i);
+                if(normalized.get(i) > best) {
+                    best = normalized.get(i);
                 }
             }
         }
-        return Best;
     }
 }

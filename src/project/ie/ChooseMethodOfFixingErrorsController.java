@@ -57,14 +57,16 @@ public class ChooseMethodOfFixingErrorsController implements Initializable {
 
     @FXML
     private void onMouseClickedUseAverageOfColumn(MouseEvent event) {
-        System.out.println("klik");
-        AverageOfColumn averageOfColumn = new AverageOfColumn();
-        averageOfColumn.setExcelFile(excelFile);
-        averageOfColumn.setAverageOfColumn();
-        //for(double elem : a) {
-        //    System.out.println(elem + "  jj");
-        //}
-        goToResult();
+        for(int i = 0; i < excelFile.columns.size(); i++) {
+            Column column = excelFile.columns.get(i);
+            Double average = column.Average();
+            for(int j = 0; j < column.objects.size(); j++) {
+                if (column.objects.get(j) == null) {
+                    column.objects.set(j, average);
+                }
+            }
+        }
+        goToSmallBig();
     }
 
     @FXML
@@ -73,20 +75,36 @@ public class ChooseMethodOfFixingErrorsController implements Initializable {
         removeAllFaultyRows.setExcelFile(excelFile);
         removeAllFaultyRows.removeAllFaultyRows();
 
-        goToResult();
+        goToSmallBig();
     }
 
-    public void goToResult() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("result.fxml"));
-            Parent root = (Parent) loader.load();
+    public void goToSmallBig() {
+        boolean outliers = excelFile.findOutliers();
+        if(outliers == true) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("outliers.fxml"));
+                Parent root = (Parent) loader.load();
 
-            ResultController controller = loader.getController();
-            controller.setBorderPaneAndExcelFile(borderPane, excelFile);
+                OutliersController controller = loader.getController();
+                controller.setBorderPaneAndExcelFile(borderPane, excelFile);
 
-            borderPane.setBottom(root);
-        } catch (IOException e) {
-            e.printStackTrace();
+                borderPane.setBottom(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("smallBig.fxml"));
+                Parent root = (Parent) loader.load();
+
+                SmallBigController controller = loader.getController();
+                controller.setBorderPaneAndExcelFile(borderPane, excelFile);
+
+                borderPane.setBottom(root);
+        }   catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

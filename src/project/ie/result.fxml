@@ -1,10 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.ResultController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #011627;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ie.ResultController">
    <children>
-      <Label fx:id="labelResults" alignment="CENTER" contentDisplay="CENTER" layoutX="115.0" layoutY="57.0" prefHeight="191.0" prefWidth="371.0" textAlignment="CENTER" />
-   </children>
+      <Label fx:id="labelResults1" alignment="CENTER" contentDisplay="CENTER" layoutX="122.0" layoutY="49.0" prefHeight="100.0" prefWidth="371.0" textAlignment="CENTER" textFill="#efffe9">
+         <font>
+            <Font name="Bookman Old Style" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imageViewStar1" fitHeight="26.0" fitWidth="20.0" layoutX="361.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar2" fitHeight="20.0" fitWidth="20.0" layoutX="386.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar3" fitHeight="20.0" fitWidth="20.0" layoutX="411.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar4" fitHeight="20.0" fitWidth="31.0" layoutX="361.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar5" fitHeight="20.0" fitWidth="20.0" layoutX="386.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar6" fitHeight="20.0" fitWidth="31.0" layoutX="411.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar7" fitHeight="20.0" fitWidth="31.0" layoutX="361.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar8" fitHeight="20.0" fitWidth="20.0" layoutX="386.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+             <Image url="@../../star.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageViewStar9" fitHeight="20.0" fitWidth="20.0" layoutX="411.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../star.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelResults2" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="14.0" prefHeight="39.0" prefWidth="277.0" text="RESULTS" textAlignment="CENTER" textFill="#efffe9">
+         <font>
+            <Font name="Bookman Old Style" size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="108.0" layoutY="170.0" prefHeight="130.0" prefWidth="430.0" style="-fx-background:#011627;">
+         <content>
+            <HBox prefHeight="130.0" prefWidth="400.0">
+               <children>
+                  <Label fx:id="labelResults" alignment="TOP_RIGHT" blendMode="SRC_ATOP" contentDisplay="TOP" prefHeight="180.0" prefWidth="200.0" text="left" textAlignment="RIGHT" textFill="#efffe9">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelResultsRight" alignment="TOP_LEFT" blendMode="SRC_ATOP" contentDisplay="TOP" prefHeight="180.0" prefWidth="200.0" text="right" textAlignment="LEFT" textFill="#efffe9">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+      <Button fx:id="buttonBack" layoutX="239.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedBackToLoadFile" style="-fx-background-color: #EFFFE9; -fx-background-radius: 0;" text="Load new file">
+         <font>
+            <Font name="Bookman Old Style" size="18.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></Button>
+</children>
 </AnchorPane>
